@@ -1,5 +1,20 @@
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
 (global-set-key (kbd "C-M-g") 'goto-line)
 (global-set-key (kbd "RET") 'newline-and-indent)
+(windmove-default-keybindings)
+
+;; Uncomment for fullscreen frame with some default splits
+;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;(split-window-horizontally)
+;(split-window-horizontally)
+;(balance-windows)
 
 (custom-set-variables
 ;; custom-set-variables was added by Custom.
