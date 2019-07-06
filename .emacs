@@ -11,7 +11,7 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (fringe-mode '(0 . 8))
-
+(tool-bar-mode -1)
 ;; This has to be at the top so any new packages are registered to
 ;; package-selected-packages correctly.
 (setq custom-file (concat user-emacs-directory "custom.el"))
