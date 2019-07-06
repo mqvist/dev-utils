@@ -1,9 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package configuration
-(package-initialize)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 (dolist (package '(use-package))
    (unless (package-installed-p package)
@@ -61,7 +61,7 @@
 ;; Other settings
 (setq inhibit-startup-message t)
 (global-auto-revert-mode 1)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(save-place-mode 1)
 ;; Emacs' area
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
