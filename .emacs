@@ -63,15 +63,17 @@
   :config (load-theme 'base16-material-darker t))
 
 (use-package window
-  :bind
-  (("S-C-<left>" . shrink-window-horizontally)
-   ("S-C-<right>" . enlarge-window-horizontally)
-   ("S-C-<down>" . shrink-window)
-   ("S-C-<up>" . enlarge-window)
-   ))
+  :bind  (("S-C-<left>" . shrink-window-horizontally)
+	  ("S-C-<right>" . enlarge-window-horizontally)
+	  ("S-C-<down>" . shrink-window)
+	  ("S-C-<up>" . enlarge-window)))
 
 (use-package windmove
   :init (windmove-default-keybindings))
+
+(use-package bs
+  :bind ("C-x C-b" . bs-show))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OS X specific settings
 (if (eq system-type 'darwin)
