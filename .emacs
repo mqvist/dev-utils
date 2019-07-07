@@ -10,6 +10,7 @@
 (setq fill-column 80)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+(global-auto-revert-mode 1)
 (fringe-mode '(0 . 8))
 (tool-bar-mode -1)
 ;; This has to be at the top so any new packages are registered to
