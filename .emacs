@@ -59,6 +59,12 @@
 (use-package magit
   :ensure t)
 
+(use-package smartparens
+  :ensure t
+  :config (progn
+	    (require 'smartparens-config)
+	    (smartparens-global-mode 1)))
+
 (use-package base16-theme
   :ensure t
   :config (load-theme 'base16-material-darker t))
