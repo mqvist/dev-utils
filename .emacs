@@ -1,4 +1,3 @@
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic settings
 (setq inhibit-startup-message t)
@@ -31,7 +30,12 @@
    (unless (package-installed-p package)
      (package-install package)))
 
-;; Install (if needed) and configure packages
+
+(use-package projectile
+  :ensure t
+  :bind ("M-p" . projectile-command-map)
+  :config (projectile-mode +1))
+
 (use-package crux
   :ensure t
   :bind (([remap move-beginning-of-line] . crux-move-beginning-of-line)
