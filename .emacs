@@ -69,6 +69,10 @@
   :ensure t
   :config (load-theme 'base16-material-darker t))
 
+(use-package move-text
+  :ensure t
+  :config (move-text-default-bindings))
+
 (use-package window
   :bind  (("S-C-<left>" . shrink-window-horizontally)
 	  ("S-C-<right>" . enlarge-window-horizontally)
