@@ -89,6 +89,10 @@
 (use-package bs
   :bind ("C-x C-b" . bs-show))
 
+(use-package misc
+  :bind (([remap forward-word] . forward-to-word)
+	 ([remap right-word] . forward-to-word)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OS X specific settings
 (if (eq system-type 'darwin)
