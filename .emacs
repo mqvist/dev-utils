@@ -61,7 +61,8 @@
   :hook (python-mode . blacken-mode))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1))
 
 (use-package smartparens
   :ensure t
