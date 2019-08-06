@@ -30,12 +30,15 @@
    (unless (package-installed-p package)
      (package-install package)))
 
+(use-package ivy
+  :ensure t)
 
 (use-package projectile
   :ensure t
   :bind ("M-p" . projectile-command-map)
-  :config (projectile-mode +1))
-
+  :config (progn
+	    (projectile-mode +1)
+	    (setq projectile-completion-system 'ivy)))
 (use-package crux
   :ensure t
   :bind (([remap move-beginning-of-line] . crux-move-beginning-of-line)
