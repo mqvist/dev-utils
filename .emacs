@@ -6,7 +6,7 @@
 (setq buffers-menu-max-size 100)
 (setq c-basic-offset 4)
 (setq c-default-style "stroustrup")
-(setq fill-column 80)
+(setq-default fill-column 80)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (global-auto-revert-mode 1)
