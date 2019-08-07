@@ -30,15 +30,21 @@
    (unless (package-installed-p package)
      (package-install package)))
 
-(use-package ivy
+(use-package delight
   :ensure t)
+
+(use-package ivy
+  :ensure t
+  :delight)
 
 (use-package projectile
   :ensure t
+  :delight '(:eval (concat " " (projectile-project-name)))
   :bind ("M-p" . projectile-command-map)
   :config (progn
 	    (projectile-mode +1)
 	    (setq projectile-completion-system 'ivy)))
+
 (use-package crux
   :ensure t
   :bind (([remap move-beginning-of-line] . crux-move-beginning-of-line)
@@ -56,11 +62,13 @@
 
 (use-package anaconda-mode
   :ensure t
+  :delight
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 
 (use-package blacken
   :ensure t
+  :delight
   :hook (python-mode . blacken-mode))
 
 (use-package magit
@@ -69,6 +77,7 @@
 
 (use-package smartparens
   :ensure t
+  :delight
   :config (progn
 	    (require 'smartparens-config)
 	    (smartparens-global-mode 1)))
@@ -92,6 +101,12 @@
 
 (use-package bs
   :bind ("C-x C-b" . bs-show))
+
+(use-package eldoc
+  :delight)
+
+(use-package abbrev
+  :delight)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
