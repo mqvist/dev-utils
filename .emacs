@@ -84,7 +84,10 @@
 
 (use-package base16-theme
   :ensure t
-  :config (load-theme 'base16-material-darker t))
+  :config (progn
+	    (load-theme 'base16-material-darker t)
+	    ;; Make comments slightly easier to see
+	    (set-face-foreground 'font-lock-comment-face "#606060")))
 
 (use-package move-text
   :ensure t
