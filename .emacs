@@ -30,16 +30,15 @@
    (unless (package-installed-p package)
      (package-install package)))
 
-(use-package delight
+(use-package diminish
   :ensure t)
 
 (use-package ivy
   :ensure t
-  :delight)
+  :diminish)
 
 (use-package projectile
   :ensure t
-  :delight '(:eval (concat " " (projectile-project-name)))
   :bind ("M-p" . projectile-command-map)
   :config (progn
 	    (projectile-mode +1)
@@ -62,13 +61,13 @@
 
 (use-package anaconda-mode
   :ensure t
-  :delight
+  :diminish
   :hook ((python-mode . anaconda-mode)
          (python-mode . anaconda-eldoc-mode)))
 
 (use-package blacken
   :ensure t
-  :delight
+  :diminish
   :hook (python-mode . blacken-mode))
 
 (use-package magit
@@ -77,7 +76,7 @@
 
 (use-package smartparens
   :ensure t
-  :delight
+  :diminish
   :config (progn
 	    (require 'smartparens-config)
 	    (smartparens-global-mode 1)))
@@ -106,10 +105,10 @@
   :bind ("C-x C-b" . bs-show))
 
 (use-package eldoc
-  :delight)
+  :diminish)
 
 (use-package abbrev
-  :delight)
+  :diminish)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
