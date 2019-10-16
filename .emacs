@@ -10,6 +10,8 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq require-final-newline t)
+;; Prevent GConf from causing Emacs font changes
+(define-key special-event-map [config-changed-event] 'ignore)
 (global-auto-revert-mode 1)
 (fringe-mode '(0 . 8))
 (tool-bar-mode -1)
