@@ -7,6 +7,7 @@
 (setq c-basic-offset 4)
 (setq c-default-style "stroustrup")
 (setq-default fill-column 80)
+(c-set-offset 'innamespace 0)
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq require-final-newline t)
