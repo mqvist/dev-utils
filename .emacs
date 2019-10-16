@@ -117,12 +117,14 @@
 (use-package subword
   :hook (prog-mode . subword-mode))
 
+(when (memq window-system '(mac ns x))
+  (use-package exec-path-from-shell
+    :ensure t
+    :hook (after-init . exec-path-from-shell-initialize)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OS X specific settings
 (if (eq system-type 'darwin)
     (progn
-      (use-package exec-path-from-shell
-        :ensure t
-        :hook (after-init . exec-path-from-shell-initialize))
       (setq mac-command-modifier 'meta)
       (setq mac-option-modifier nil)))
