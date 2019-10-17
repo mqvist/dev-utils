@@ -41,6 +41,10 @@
   :ensure t
   :diminish)
 
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)))
+
 (use-package projectile
   :ensure t
   :bind ("M-p" . projectile-command-map)
