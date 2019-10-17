@@ -96,6 +96,13 @@
 	    ;; Make comments slightly easier to see
 	    (set-face-foreground 'font-lock-comment-face "#606060")))
 
+(use-package spaceline
+  :ensure t
+  :config (progn
+	    (require 'spaceline-config)
+	    (setq powerline-default-separator 'arrow)
+	    (spaceline-spacemacs-theme)))
+
 (use-package move-text
   :ensure t
   :config (move-text-default-bindings))
@@ -119,6 +126,7 @@
   :diminish)
 
 (use-package subword
+  :diminish
   :hook (prog-mode . subword-mode))
 
 (when (memq window-system '(mac ns x))
