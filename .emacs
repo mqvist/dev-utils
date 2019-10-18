@@ -82,6 +82,17 @@
   :ensure t
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1))
 
+(use-package org-mode
+  :config (progn
+	    (setq org-hide-leading-stars t)
+	    (setq org-support-shift-select 'always))
+  :hook ((org-shiftup-final . windmove-up)
+	 (org-shiftleft-final . windmove-left)
+	 (org-shiftdown-final . windmove-down)
+	 (org-shiftright-final . windmove-right))
+  :bind (("C-c a" . org-agenda)
+	 ("C-c l" . org-store-link)))
+
 (use-package smartparens
   :ensure t
   :diminish
