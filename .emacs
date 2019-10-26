@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic settings
 (setq inhibit-startup-message t)
-(setq show-paren-mode t)
 (setq column-number-mode t)
 (setq buffers-menu-max-size 100)
 (setq c-basic-offset 4)
@@ -13,6 +12,7 @@
 (setq require-final-newline t)
 ;; Prevent GConf from causing Emacs font changes
 (define-key special-event-map [config-changed-event] 'ignore)
+(show-paren-mode)
 (global-auto-revert-mode 1)
 (fringe-mode '(0 . 8))
 (tool-bar-mode -1)
