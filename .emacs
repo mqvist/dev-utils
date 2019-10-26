@@ -47,7 +47,7 @@
 
 (use-package projectile
   :ensure t
-  :bind ("M-p" . projectile-command-map)
+  :bind-keymap ("M-p" . projectile-command-map)
   :config (progn
 	    (projectile-mode +1)
 	    (setq projectile-completion-system 'ivy)))
