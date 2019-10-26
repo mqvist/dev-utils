@@ -114,6 +114,11 @@
 	    (setq powerline-default-separator 'arrow)
 	    (spaceline-spacemacs-theme)))
 
+(use-package which-key
+  :ensure t
+  :diminish
+  :config (which-key-mode 1))
+
 (use-package move-text
   :ensure t
   :config (move-text-default-bindings))
