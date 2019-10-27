@@ -104,12 +104,10 @@
 	    (require 'smartparens-config)
 	    (smartparens-global-mode 1)))
 
-(use-package base16-theme
+(use-package spacemacs-theme
   :ensure t
-  :config (progn
-	    (load-theme 'base16-material-darker t)
-	    ;; Make comments slightly easier to see
-	    (set-face-foreground 'font-lock-comment-face "#606060")))
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
 
 (use-package spaceline
   :ensure t
