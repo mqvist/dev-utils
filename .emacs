@@ -149,6 +149,9 @@
   :diminish
   :hook (prog-mode . subword-mode))
 
+(use-package desktop
+  :config (desktop-save-mode 1))
+
 (when (memq window-system '(mac ns x))
   (use-package exec-path-from-shell
     :ensure t
