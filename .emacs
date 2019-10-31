@@ -115,7 +115,7 @@
   :config
   (load-theme 'base16-material-darker t)
   ;; Make comments slightly easier to see
-  (set-face-foreground 'font-lock-comment-face "#606060"))
+  (set-face-foreground 'font-lock-comment-face "#707070"))
 
 (use-package spaceline
   :ensure t
