@@ -48,9 +48,9 @@
 (use-package projectile
   :ensure t
   :bind-keymap ("M-p" . projectile-command-map)
-  :config (progn
-	    (projectile-mode +1)
-	    (setq projectile-completion-system 'ivy)))
+  :config
+  (projectile-mode +1)
+  (setq projectile-completion-system 'ivy))
 
 (use-package crux
   :ensure t
@@ -83,10 +83,10 @@
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1))
 
 (use-package org-mode
-  :config (progn
-	    (setq org-hide-leading-stars t)
-	    (setq org-support-shift-select 'always)
-	    (setq org-cycle-separator-lines -1))
+  :init
+  (setq org-hide-leading-stars t)
+  (setq org-support-shift-select 'always)
+  (setq org-cycle-separator-lines -1)
   :hook ((org-shiftup-final . windmove-up)
 	 (org-shiftleft-final . windmove-left)
 	 (org-shiftdown-final . windmove-down)
@@ -102,23 +102,23 @@
 (use-package smartparens
   :ensure t
   :diminish
-  :config (progn
-	    (require 'smartparens-config)
-	    (smartparens-global-mode 1)))
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode 1))
 
 (use-package base16-theme
   :ensure t
-  :config (progn
-	    (load-theme 'base16-material-darker t)
-	    ;; Make comments slightly easier to see
-	    (set-face-foreground 'font-lock-comment-face "#606060")))
+  :config
+  (load-theme 'base16-material-darker t)
+  ;; Make comments slightly easier to see
+  (set-face-foreground 'font-lock-comment-face "#606060"))
 
 (use-package spaceline
   :ensure t
-  :config (progn
-	    (require 'spaceline-config)
-	    (setq powerline-default-separator 'arrow)
-	    (spaceline-spacemacs-theme)))
+  :config
+  (require 'spaceline-config)
+  (setq powerline-default-separator 'arrow)
+  (spaceline-spacemacs-theme))
 
 (use-package which-key
   :ensure t
