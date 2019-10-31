@@ -30,9 +30,9 @@
 (package-initialize)
 
 ;; Bootstrap use-package
-(dolist (package '(use-package))
-   (unless (package-installed-p package)
-     (package-install package)))
+(unless (package-installed-p 'use-package) ; Bootstrap John Wigley's `use-package'
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (use-package diminish
   :ensure t)
