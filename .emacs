@@ -85,8 +85,9 @@
 (use-package org-mode
   :init
   (setq org-hide-leading-stars t)
-  (setq org-support-shift-select 'always)
   (setq org-cycle-separator-lines -1)
+  :config
+  (setq org-support-shift-select 'always)
   :hook ((org-shiftup-final . windmove-up)
 	 (org-shiftleft-final . windmove-left)
 	 (org-shiftdown-final . windmove-down)
