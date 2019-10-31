@@ -85,11 +85,13 @@
 (use-package org-mode
   :config (progn
 	    (setq org-hide-leading-stars t)
-	    (setq org-support-shift-select 'always))
+	    (setq org-support-shift-select 'always)
+	    (setq org-cycle-separator-lines -1))
   :hook ((org-shiftup-final . windmove-up)
 	 (org-shiftleft-final . windmove-left)
 	 (org-shiftdown-final . windmove-down)
-	 (org-shiftright-final . windmove-right))
+	 (org-shiftright-final . windmove-right)
+	 (org-mode . turn-on-auto-fill))
   :bind (("C-c a" . org-agenda)
 	 ("C-c l" . org-store-link)))
 
