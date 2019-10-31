@@ -96,6 +96,9 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c l" . org-store-link)))
 
+(use-package htmlize
+  :ensure t)
+
 (use-package expand-region
   :ensure t
   :bind (("C-=" . er/expand-region)))
