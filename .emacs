@@ -114,6 +114,8 @@
   :ensure t
   :config
   (load-theme 'base16-material-darker t)
+  ;; Make background darker
+  (set-background-color "#101010")
   ;; Make comments slightly easier to see
   (set-face-foreground 'font-lock-comment-face "#707070"))
 
