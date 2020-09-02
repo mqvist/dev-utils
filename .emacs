@@ -79,6 +79,12 @@
   :diminish
   :hook (python-mode . blacken-mode))
 
+(use-package ansi-color
+  :init
+  (defun colorize-compilation-buffer ()
+    (ansi-color-apply-on-region compilation-filter-start (point)))
+  :hook (compilation-filter . colorize-compilation-buffer))
+
 (use-package magit
   :ensure t
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1))
