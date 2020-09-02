@@ -97,6 +97,10 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c l" . org-store-link)))
 
+(use-package elm-mode
+  :ensure t
+  :hook (elm-mode . elm-format-on-save-mode))
+
 (use-package htmlize
   :ensure t)
 
