@@ -9,14 +9,29 @@
 import sys
 import os
 import subprocess
+import signal
 from threading import Timer
 
 import pyinotify
 
 
-def run_tests():
-    os.system("cls" if os.name == "nt" else "clear")
-    os.system("pytest --tb=short -vv")
+class TestRunner:
+    def __init__(self, pytest_args=""):
+        self.test_process = None
+        self.pytest_args = pytest_args
+
+    def run_tests(self):
+        subprocess.call("self" if os.name == "nt" else "clear")
+        if self.test_process and not self.test_process.poll():
+            try:
+                os.killpg(os.getpgid(self.test_process.pid), signal.SIGTERM)
+                self.test_process.wait()
+                print("Restarting tests", file=sys.stderr)
+            except ProcessLookupError:
+                pass
+        self.test_process = subprocess.Popen(
+            f"pytest {self.pytest_args}", shell=True, preexec_fn=os.setsid
+        )
 
 
 def file_is_in_git(path):
@@ -25,11 +40,12 @@ def file_is_in_git(path):
 
 
 class ModHandler(pyinotify.ProcessEvent):
-    def __init__(self):
+    def __init__(self, notify):
         self.timer = None
-        self._run_tests()
+        self.notify = notify
+        self.notify()
 
-    def _run_tests(self):
+    def _notify(self):
         if self.timer:
             # Try to cancel the timer if. This can prevent unnecessary
             # runs caused by rapid file changes, e.g., when git branch
@@ -37,18 +53,19 @@ class ModHandler(pyinotify.ProcessEvent):
             self.timer.cancel()
             # Wait for the thread to finish if has already started.
             self.timer.join()
-        # Start a timer to call run_tests(), allowing for a brief
-        # period for any file changes to come in.
-        self.timer = Timer(0.5, run_tests)
+        # Start a timer to call notify, allowing for a brief period for any file
+        # changes to come in.
+        self.timer = Timer(0.5, self.notify)
         self.timer.start()
 
     def process_IN_CLOSE_WRITE(self, evt):
         if file_is_in_git(evt.pathname):
-            self._run_tests()
+            self._notify()
 
 
 def main():
-    handler = ModHandler()
+    runner = TestRunner(" ".join(sys.argv[1:]))
+    handler = ModHandler(runner.run_tests)
     wm = pyinotify.WatchManager()
     notifier = pyinotify.Notifier(wm, handler)
     wdd = wm.add_watch(".", pyinotify.IN_CLOSE_WRITE, rec=True)
