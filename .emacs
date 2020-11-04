@@ -167,6 +167,16 @@
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1)
   :bind (("C-x g" . magit-status)))
 
+(use-package racket-mode
+  :ensure t)
+
+(use-package racket-xp
+  :diminish
+  :hook (racket-xp-mode . (lambda ()
+			    (remove-hook 'pre-redisplay-functions
+					 #'racket-xp-pre-redisplay
+					 t))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OS X specific settings
 (when (memq window-system '(mac ns x))
