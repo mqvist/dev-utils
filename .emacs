@@ -107,13 +107,6 @@
   (projectile-mode +1)
   (setq projectile-completion-system 'ivy))
 
-(use-package smartparens
-  :ensure t
-  :diminish
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-mode 1))
-
 (use-package spaceline
   :ensure t
   :config
