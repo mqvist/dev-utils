@@ -155,6 +155,11 @@
   :ensure t
   :hook (elm-mode . elm-format-on-save-mode))
 
+(use-package flycheck
+  :ensure t
+  :diminish
+  :init (global-flycheck-mode))
+
 (use-package haskell-mode
   :ensure t
   :hook (haskell-mode . interactive-haskell-mode))
