@@ -21,14 +21,20 @@ class TestRunner:
         self.pytest_args = pytest_args
 
     def run_tests(self):
-        subprocess.call("self" if os.name == "nt" else "clear")
+        subprocess.call("cls" if os.name == "nt" else "clear")
         if self.test_process and not self.test_process.poll():
+            print("Restarting tests", file=sys.stderr)
             try:
-                os.killpg(os.getpgid(self.test_process.pid), signal.SIGTERM)
-                self.test_process.wait()
-                print("Restarting tests", file=sys.stderr)
+                # Kill the whole process group to ensure that any child
+                # processes started by the tests are also killed.
+                pgid = os.getpgid(self.test_process.pid)
+                os.killpg(pgid, signal.SIGTERM)
+                # Negative PID == group PID
+                os.waitpid(-pgid, 0)
             except ProcessLookupError:
                 pass
+        # Note: "preexec_fn=os.setsid" will ensure the process is started in a
+        # new process group.
         self.test_process = subprocess.Popen(
             f"pytest {self.pytest_args}", shell=True, preexec_fn=os.setsid
         )
