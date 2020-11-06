@@ -107,6 +107,15 @@
   (projectile-mode +1)
   (setq projectile-completion-system 'ivy))
 
+(use-package smartparens
+  :ensure t
+  :diminish
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode 1)
+  (smartparens-global-strict-mode 1)
+  :bind (("C-<delete>" . sp-unwrap-sexp)))
+
 (use-package spaceline
   :ensure t
   :config
