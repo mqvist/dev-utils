@@ -186,6 +186,7 @@
 
 (use-package racket-xp
   :diminish
+  :hook (racket-mode . racket-xp-mode)
   :hook (racket-xp-mode . (lambda ()
 			    (remove-hook 'pre-redisplay-functions
 					 #'racket-xp-pre-redisplay
