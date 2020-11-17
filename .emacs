@@ -45,6 +45,12 @@
     (ansi-color-apply-on-region compilation-filter-start (point)))
   :hook (compilation-filter . colorize-compilation-buffer))
 
+(use-package term
+  :hook (term-mode .  (lambda () (set-face-attribute 'comint-highlight-prompt nil
+						     :inherit nil)))
+  :custom-face
+  (term ((t (:background "#101010" :foreground "gray")))))
+
 (use-package base16-theme
   :ensure t
   :config
