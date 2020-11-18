@@ -60,6 +60,14 @@
   ;; Make comments slightly easier to see
   (set-face-foreground 'font-lock-comment-face "#707070"))
 
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+  (setq beacon-blink-when-focused 1)
+  (setq beacon-blink-when-window-changes 1)
+  (setq beacon-blink-when-buffer-changes 1))
+
 (use-package bs
   :bind ("C-x C-b" . bs-show))
 
