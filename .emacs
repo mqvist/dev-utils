@@ -195,6 +195,10 @@
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1)
   :bind (("C-x g" . magit-status)))
 
+(use-package quickrun
+  :ensure t
+  :bind (("C-c C-q" . quickrun)))
+
 (use-package racket-mode
   :ensure t)
 
