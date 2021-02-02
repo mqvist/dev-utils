@@ -181,7 +181,9 @@
 (use-package flycheck
   :ensure t
   :diminish
-  :init (global-flycheck-mode))
+  :config
+  :init (global-flycheck-mode)
+  (setq flycheck-global-modes '(not org-mode)))
 
 (use-package haskell-mode
   :ensure t
