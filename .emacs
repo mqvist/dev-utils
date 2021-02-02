@@ -127,7 +127,6 @@
   :config
   (require 'smartparens-config)
   (smartparens-global-mode 1)
-  ;; (smartparens-global-strict-mode 1)
   :bind (("C-<delete>" . sp-unwrap-sexp)))
 
 (use-package spaceline
