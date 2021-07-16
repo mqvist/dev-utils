@@ -73,6 +73,11 @@
 
 (use-package crux
   :ensure t
+  :custom
+  ;; Switch crux to use vterm. In order for crux to reuse an existing terminal,
+  ;; its name has to have asterisks around it.
+  (crux-term-func (lambda (arg) (vterm (concat "*" arg "*"))))
+  (crux-term-buffer-name "vterm")
   :bind (([remap move-beginning-of-line] . crux-move-beginning-of-line)
          ([(shift return)] . crux-smart-open-line)
          ([(control shift return)] . crux-smart-open-line-above)
