@@ -145,6 +145,9 @@
   :ensure t
   :bind (("C-s" . swiper)))
 
+(use-package vterm
+  :ensure t)
+
 (use-package which-key
   :ensure t
   :diminish
