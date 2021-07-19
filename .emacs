@@ -137,12 +137,12 @@
   (smartparens-global-mode 1)
   :bind (("C-<delete>" . sp-unwrap-sexp)))
 
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-  (setq powerline-default-separator 'arrow)
-  (spaceline-spacemacs-theme))
+;; (use-package spaceline
+;;   :ensure t
+;;   :config
+;;   (require 'spaceline-config)
+;;   (setq powerline-default-separator 'arrow)
+;;   (spaceline-spacemacs-theme))
 
 (use-package subword
   :diminish
