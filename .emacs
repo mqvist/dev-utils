@@ -3,6 +3,9 @@
 (setq inhibit-startup-message t)
 (setq column-number-mode t)
 (setq buffers-menu-max-size 100)
+;; Force using 4 spaces for indentation in all modes by default
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
 (setq c-default-style "stroustrup")
 (setq-default fill-column 80)
