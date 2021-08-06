@@ -30,13 +30,17 @@
 (require 'package)
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
-	("org" . "http://orgmode.org/elpa/")))
+	    ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
+
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; Bootstrap use-package
 (unless (package-installed-p 'use-package) ; Bootstrap John Wigley's `use-package'
-  (package-refresh-contents)
   (package-install 'use-package))
+
+(require 'use-package)
 
 ;; General packages and settings
 (use-package abbrev
