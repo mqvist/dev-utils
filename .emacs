@@ -144,6 +144,9 @@
   :ensure t
   :bind (("C-s" . swiper)))
 
+(use-package vterm
+  :ensure t)
+
 (use-package which-key
   :ensure t
   :diminish
@@ -176,13 +179,6 @@
 (use-package elm-mode
   :ensure t
   :hook (elm-mode . elm-format-on-save-mode))
-
-(use-package flycheck
-  :ensure t
-  :diminish
-  :config
-  :init (global-flycheck-mode)
-  (setq flycheck-global-modes '(not org-mode)))
 
 (use-package haskell-mode
   :ensure t
