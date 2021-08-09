@@ -144,9 +144,6 @@
   :ensure t
   :bind (("C-s" . swiper)))
 
-(use-package vterm
-  :ensure t)
-
 (use-package which-key
   :ensure t
   :diminish
@@ -206,6 +203,12 @@
 			    (remove-hook 'pre-redisplay-functions
 					 #'racket-xp-pre-redisplay
 					 t))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Packages that are not supported in windows
+(if (not (eq system-type 'windows-nt))
+    (use-package vterm
+      :ensure t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OS X specific settings
