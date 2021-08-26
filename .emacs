@@ -143,12 +143,12 @@
   (smartparens-global-mode 1)
   :bind (("C-<delete>" . sp-unwrap-sexp)))
 
-;; (use-package spaceline
-;;   :ensure t
-;;   :config
-;;   (require 'spaceline-config)
-;;   (setq powerline-default-separator 'arrow)
-;;   (spaceline-spacemacs-theme))
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+(use-package all-the-icons
+  :ensure t)
 
 (use-package subword
   :diminish
