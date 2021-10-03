@@ -193,7 +193,18 @@
 
 (use-package haskell-mode
   :ensure t
-  :hook (haskell-mode . interactive-haskell-mode))
+  :custom
+  (haskell-tags-on-save t)
+  (haskell-process-type 'stack-ghci)
+  (haskell-stylish-on-save t)
+  (haskell-mode-stylish-haskell-path "brittany")
+  :hook
+  (haskell-mode . interactive-haskell-mode)
+  :bind (("M-." . haskell-mode-jump-to-tag)
+	 ("C-c C-d" . haskell-hoogle)
+	 ("M-n" . haskell-goto-next-error)
+	 ("C-M-n" . haskell-goto-prev-error)
+	 ("C-c l" . haskell-check)))
 
 (use-package htmlize
   :ensure t)
