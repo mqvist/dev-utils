@@ -187,9 +187,9 @@
 (use-package eldoc
   :diminish)
 
-(use-package elm-mode
-  :ensure t
-  :hook (elm-mode . elm-format-on-save-mode))
+;; (use-package elm-mode
+;;   :ensure t
+;;   :hook (elm-mode . elm-format-on-save-mode))
 
 (use-package haskell-mode
   :ensure t
@@ -214,20 +214,16 @@
   :config (setq magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1)
   :bind (("C-x g" . magit-status)))
 
-(use-package quickrun
-  :ensure t
-  :bind (("C-c C-q" . quickrun)))
+;; (use-package racket-mode
+;;   :ensure t)
 
-(use-package racket-mode
-  :ensure t)
-
-(use-package racket-xp
-  :diminish
-  :hook (racket-mode . racket-xp-mode)
-  :hook (racket-xp-mode . (lambda ()
-			    (remove-hook 'pre-redisplay-functions
-					 #'racket-xp-pre-redisplay
-					 t))))
+;; (use-package racket-xp
+;;   :diminish
+;;   :hook (racket-mode . racket-xp-mode)
+;;   :hook (racket-xp-mode . (lambda ()
+;; 			    (remove-hook 'pre-redisplay-functions
+;; 					 #'racket-xp-pre-redisplay
+;; 					 t))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages that are not supported in windows
