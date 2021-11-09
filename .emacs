@@ -118,15 +118,40 @@
   :init
   (setq org-hide-leading-stars t)
   (setq org-cycle-separator-lines -1)
+  ;; Disable priority keybindings
+  (unbind-key "S-<up>" org-agenda-mode-map)
+  (unbind-key "S-<down>" org-agenda-mode-map)
+  (unbind-key "S-<up>" org-agenda-mode-map)
+  (unbind-key "S-<down>" org-agenda-mode-map)
   :config
-  (setq org-support-shift-select 'always)
+  (progn
+    (setq org-support-shift-select 'always)
+    (setq org-agenda-files '("~/google_drive/org/todo.org"))
+    (setq org-archive-location "~/google_drive/org/journal.org::datetree/")
+    (setq org-capture-templates
+          '(("t" "TODO" entry
+             (file+headline "~/google_drive/org/todo.org" "Tasks")
+             "* TODO %^{Description} %^g\n  %?\n  Added: %U"
+             :empty-lines 1)
+            ("T" "TODO today" entry
+             (file+headline "~/google_drive/org/todo.org" "Tasks")
+             "* TODO %^{Description} %^g\n  SCHEDULED: %t\n  %?\n  Added: %U"
+             :empty-lines 1)
+            ("j" "Journal entry" entry
+             (file+datetree "~/google_drive/org/journal.org")
+             "* %^{Start time|%<%k:%M>} %^{Title} %^g\n  %?")))
+    (setq org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+    (setq org-log-done 'note)
+    (setq org-agenda-show-future-repeats 'next))
   :hook ((org-shiftup-final . windmove-up)
-	 (org-shiftleft-final . windmove-left)
-	 (org-shiftdown-final . windmove-down)
-	 (org-shiftright-final . windmove-right)
-	 (org-mode . turn-on-auto-fill))
+         (org-shiftleft-final . windmove-left)
+         (org-shiftdown-final . windmove-down)
+         (org-shiftright-final . windmove-right)
+         (org-mode . turn-on-auto-fill))
   :bind (("C-c a" . org-agenda)
-	 ("C-c l" . org-store-link)))
+         ("C-c l" . org-store-link)
+         ("C-c C-l" . org-insert-link)
+         ("C-c c" . org-capture)))
 
 (use-package projectile
   :ensure t
