@@ -114,18 +114,12 @@
   :ensure t
   :config (move-text-default-bindings))
 
-(use-package org-mode
+(use-package org
   :init
   (setq org-hide-leading-stars t)
   (setq org-cycle-separator-lines -1)
-  ;; Disable priority keybindings
-  (unbind-key "S-<up>" org-agenda-mode-map)
-  (unbind-key "S-<down>" org-agenda-mode-map)
-  (unbind-key "S-<up>" org-agenda-mode-map)
-  (unbind-key "S-<down>" org-agenda-mode-map)
   :config
   (progn
-    (setq org-support-shift-select 'always)
     (setq org-agenda-files '("~/google_drive/org/todo.org"))
     (setq org-archive-location "~/google_drive/org/journal.org::datetree/")
     (setq org-capture-templates
@@ -139,15 +133,26 @@
              :empty-lines 1)
             ("j" "Journal entry" entry
              (file+datetree "~/google_drive/org/journal.org")
-             "* %^{Start time|%<%k:%M>} %^{Title} %^g\n  %?")))
+             "* %^{Start time|%<%k:%M>} %^{Title} %^g\n  %?"
+             :empty-lines 1)))
     (setq org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
     (setq org-log-done 'note)
-    (setq org-agenda-show-future-repeats 'next))
+    (setq org-agenda-show-future-repeats 'next)
+    ;; Disable some keybinding that conflict with the window keys
+    (unbind-key "C-S-<up>" org-mode-map)
+    (unbind-key "C-S-<down>" org-mode-map)
+    (unbind-key "C-S-<up>" org-mode-map)
+    (unbind-key "C-S-<down>" org-mode-map))
   :hook ((org-shiftup-final . windmove-up)
          (org-shiftleft-final . windmove-left)
          (org-shiftdown-final . windmove-down)
          (org-shiftright-final . windmove-right)
-         (org-mode . turn-on-auto-fill))
+         (org-mode . turn-on-auto-fill)
+         ;; Disable some keybinding that conflict with the windmove keys
+         (org-agenda-mode . (lambda ()
+                              (progn
+                                (unbind-key "S-<up>" org-agenda-mode-map)
+                                (unbind-key "S-<down>" org-agenda-mode-map)))))
   :bind (("C-c a" . org-agenda)
          ("C-c l" . org-store-link)
          ("C-c C-l" . org-insert-link)
@@ -190,9 +195,9 @@
 
 (use-package window
   :bind  (("S-C-<left>" . shrink-window-horizontally)
-	  ("S-C-<right>" . enlarge-window-horizontally)
-	  ("S-C-<down>" . shrink-window)
-	  ("S-C-<up>" . enlarge-window)))
+          ("S-C-<right>" . enlarge-window-horizontally)
+          ("S-C-<down>" . shrink-window)
+          ("S-C-<up>" . enlarge-window)))
 
 (use-package windmove
   :init (windmove-default-keybindings))
