@@ -139,8 +139,8 @@
     (setq org-log-done 'note)
     (setq org-agenda-show-future-repeats 'next)
     ;; Disable some keybinding that conflict with the window keys
-    (unbind-key "C-S-<up>" org-mode-map)
-    (unbind-key "C-S-<down>" org-mode-map)
+    (unbind-key "S-<up>" org-mode-map)
+    (unbind-key "S-<down>" org-mode-map)
     (unbind-key "C-S-<up>" org-mode-map)
     (unbind-key "C-S-<down>" org-mode-map))
   :hook ((org-shiftup-final . windmove-up)
